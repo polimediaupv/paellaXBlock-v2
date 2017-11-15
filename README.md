@@ -1,11 +1,15 @@
 # Edx Xblock for Paella Player #
-This Xblock allows the use of videos stored in a matterhorn server using Paella Player.
-You can easily integrate the XBlock into Edx and start to use the player.
+This Xblocks integrates paella player into OpenEdx.
+You can easily integrate the XBlock into the Edx platform and start to use the player.
+
 
 ## Installation instructions ##
 In order to install the XBlock into your Edx devstack Server you need to.
 
 ## Download the XBlock from github. Place the files inside your server.
+```
+
+```
 
 ##.   Install your block::
 You must replace `/path/to/your/block` with the path where you have downloaded the xblock
