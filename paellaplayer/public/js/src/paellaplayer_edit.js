@@ -22,8 +22,7 @@ function PaellaXBlock(runtime, element,params) {
     });
 
     $(element).find('.video_data').bind('input',function(event){
-        videoids = $(element).find('.video_id');
-        [...videoids].forEach(function(currentValue, index, arr){currentValue.value="";});
+        $(element).find('.video_id').each(function(intIndex){this.value=""})
         $(element).find('.video_title')[0].value = JSON.parse(this.value)['metadata']['title'];
     });
 
@@ -38,24 +37,25 @@ function PaellaXBlock(runtime, element,params) {
 
     var generate_data = function(){
         var title = $(element).find('.video_title')[0];
-        var modes = [...$(element).find('.video_mode')];
-        var ids =[...$(element).find('.video_id')];
-        console.log("seguimos");
+        var modes = [];
+        $(element).find('.video_mode').each(function(intIndex){modes.push(this.value);});
+
+
         newdata = {"metadata": {
                 "duration": 0,
                 "title": title.value
             },
-            "streams": []}
-        ids.forEach(function(element,index){
-            if (element.value!="")
+            "streams": []};
+        $(element).find('.video_id').each(function(intIndex){
+            if (this.value!="")
             {
                 var stream = {}
-                if (modes[index].value!='youtube'){
+                if (modes[intIndex]!='youtube'){
                   stream = {
                                 "sources": {
-                                    [modes[index].value]: [
+                                    [modes[intIndex]]: [
                                         {
-                                            "src": element.value,
+                                            "src": this.value,
                                             "mimetype": "video/mp4",
                                         }
                                     ]
@@ -67,7 +67,7 @@ function PaellaXBlock(runtime, element,params) {
                                 "sources": {
                                     "youtube": [
                                         {
-                                            "id":element.value,
+                                            "id":this.value,
                                             "res": {
                                                 "w": 1280,
                                                 "h": 720
@@ -95,9 +95,9 @@ function PaellaXBlock(runtime, element,params) {
 
         var title = $(element).find('.video_title')[0];
         var modes = [];
-        [...$(element).find('.video_mode')].forEach(function(currentValue, index, arr){modes.push(currentValue.value)});
+        $(element).find('.video_mode').each(function(intIndex){modes.push(this.value);})
         var ids = [];
-        [...$(element).find('.video_id')].forEach(function(currentValue, index, arr){ids.push(currentValue.value)});
+        $(element).find('.video_id').each(function(intIndex){ids.push(this.value);})
         videodata = $(element).find('.video_data');
 
         var data = {
