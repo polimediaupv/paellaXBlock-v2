@@ -1,0 +1,3 @@
+#: default_data.py
+msgid "Data"
+msgstr "Data"

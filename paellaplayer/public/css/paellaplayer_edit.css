@@ -1,0 +1,16 @@
+/** Builder **/
+/*.xblock-paellaplayer-editor .hidden {
+    display: none !important;
+}*/
+
+.xblock-paellaplayer-editor .m-fadeOut {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+.xblock-paellaplayer-editor .m-fadeIn {
+  visibility: visible !important;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}

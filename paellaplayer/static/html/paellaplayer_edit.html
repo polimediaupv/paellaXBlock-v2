@@ -1,0 +1,109 @@
+{% load i18n %}
+<div class="xblock-paellaplayer-editor is-active editor-with-buttons " id="settings-tab">
+    <div class="editormodeselector">
+        <section class="tab feedback-tab m-fadeIn">
+           <header class="tab-header">
+                <h3>Advanced setting</h3>
+           </header>
+           <div class="tab-content">
+                <ul class="list-input settings-list">
+                  <li class="field comp-setting-entry is-set">
+                        <div class="wrapper-videolist-url videolist-settings-item">
+                            <label class="label setting-label">Data </label>
+                            <textarea class="input setting-input edit-display-name video_data" type="text">{{pretty}}</textarea>
+                            <span class="tip setting-help">The data.json of the video</span>
+                        </div>
+                  </li>
+                </ul>
+                 <ul class="list-input settings-list">
+                  <li class="field comp-setting-entry is-set">
+                        <div class="wrapper-videolist-url videolist-settings-item">
+                            <a href="#" class="button toggle-button">Change to basic view</a>
+                        </div>
+                  </li>
+                </ul>
+           </div>
+        </section>
+
+        <section class="tab feedback-tab m-fadeOut">
+             <header class="tab-header">
+                <h3>Basic setting</h3>
+            </header>
+             <ul class="list-input settings-list">
+                   <li class="field comp-setting-entry is-set">
+                        <div class="wrapper-videolist-url videolist-settings-item">
+                            <label class="label setting-label">Title</label>
+                            <input class="input setting-input edit-display-name video_title" id="title" type="text" value={{video_title}}>
+                            <span class="tip setting-help">{{video_title.help}}</span>
+                        </div>
+                  </li>
+            </ul>
+            <ul class="list-input settings-list">
+                  <li class="field comp-setting-entry is-set">
+                        <div class="wrapper-videolist-url videolist-settings-item">
+                            <label class="label setting-label">Video 1 source type</label>
+                            <select class="problem-mode video_mode" aria-describedby="video_mode-description-{{id_suffix}}">
+                            {% for field_value in fields.mode.values %}
+                                <option value="{{ field_value.value }}" {% if self.mode == field_value.value %}selected{% endif %}>
+                                    {{field_value.display_name}}
+                                </option>
+                            {% endfor %}
+                        </select>
+                            <span class="tip setting-help">Choose a source for your videos</span>
+                        </div>
+                  </li>
+                   <li class="field comp-setting-entry is-set">
+                        <div class="wrapper-videolist-url videolist-settings-item">
+                            <label class="label setting-label">ID|URL</label>
+                            <input class="input setting-input edit-display-name video_id" id="edit_href" type="text" value={{self.video_id}}>
+                            <span class="tip setting-help">{{self.video_id.help}}</span>
+                        </div>
+                  </li>
+            </ul>
+            <ul class="list-input settings-list">
+                  <li class="field comp-setting-entry is-set">
+                        <div class="wrapper-videolist-url videolist-settings-item">
+                            <label class="label setting-label">Video 2 source type</label>
+                            <select class="problem-mode video_mode" aria-describedby="video_mode-description-{{id_suffix}}">
+                            {% for field_value in fields.mode.values %}
+                                <option value="{{ field_value.value }}" {% if self.mode_b == field_value.value %}selected{% endif %}>
+                                    {{field_value.display_name}}
+                                </option>
+                            {% endfor %}
+                        </select>
+                            <span class="tip setting-help">Choose a source for your videos</span>
+                        </div>
+                  </li>
+                   <li class="field comp-setting-entry is-set">
+                        <div class="wrapper-videolist-url videolist-settings-item">
+                            <label class="label setting-label">ID|URL</label>
+                            <input class="input setting-input edit-display-name video_id" id="edit_href" type="text" value="{{self.video_id_b}}">
+                            <span class="tip setting-help">{{self.video_id_b.help}}</span>
+                        </div>
+                  </li>
+            </ul>
+            <div class="tab-content">
+                <ul class="list-input settings-list">
+                  <li class="field comp-setting-entry is-set">
+                        <div class="wrapper-videolist-url videolist-settings-item">
+                            <a href="#" class="button toggle-button">Change to advanced view</a>
+                        </div>
+                  </li>
+                </ul>
+           </div>
+        </section>
+    </div>
+
+
+      <div class="xblock-actions">
+        <span class="xblock-editor-error-message"></span>
+        <ul>
+            <li class="action-item">
+                <a href="#" class="save-button action-primary action">Save</a>
+            </li>
+            <li class="action-item">
+                <a href="#" class="button cancel-button">Cancel</a>
+            </li>
+        </ul>
+    </div>
+  </div>

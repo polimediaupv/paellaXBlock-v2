@@ -1,0 +1,9 @@
+/* CSS for PaellaXBlock */
+
+.paellaplayer_block .count {
+    font-weight: bold;
+}
+
+.paellaplayer_block p {
+    cursor: pointer;
+}
