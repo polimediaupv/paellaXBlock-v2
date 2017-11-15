@@ -4,36 +4,35 @@ You can easily integrate the XBlock into the Edx platform and start to use the p
 
 
 ## Installation instructions ##
-In order to install the XBlock into your Edx devstack Server you need to.
+In order to install the XBlock into your Edx Server you will need to.
 
 ## Download the XBlock from github. Place the files inside your server.
-```
 
-```
+		git clone https://github.com/polimediaupv/paellaXBlock-v2
+
 
 ##.   Install your block::
 You must replace `/path/to/your/block` with the path where you have downloaded the xblock
 
-        $ vagrant ssh
-        vagrant@precise64:~$ sudo -u edxapp /edx/bin/pip.edxapp install /path/to/your/block
+		sudo -u edxapp /edx/bin/pip.edxapp install /path/to/your/block
 
 ##.  Enable the block
 
-    #.  In ``edx-platform/lms/envs/common.py``, uncomment::
+  In ``edx-platform/lms/envs/common.py``, uncomment:
 
         # from xmodule.x_module import prefer_xmodules
         # XBLOCK_SELECT_FUNCTION = prefer_xmodules
 
-    #.  In ``edx-platform/cms/envs/common.py``, uncomment::
+  In ``edx-platform/cms/envs/common.py``, uncomment:
 
         # from xmodule.x_module import prefer_xmodules
         # XBLOCK_SELECT_FUNCTION = prefer_xmodules
 
-    #.  In ``edx-platform/cms/envs/common.py``, change::
+  In ``edx-platform/cms/envs/common.py``, change:
 
             'ALLOW_ALL_ADVANCED_COMPONENTS': False,
 
-        to::
+   to:
 
             'ALLOW_ALL_ADVANCED_COMPONENTS': True,
 
@@ -47,7 +46,7 @@ You must replace `/path/to/your/block` with the path where you have downloaded t
 ##.  Add your block into your course
 
     #. Edit a unit
-    #. Advanced -> your-block
+    #. Advanced -> paellaplayer
 
 ##. Deploying your XBlock
 
@@ -69,7 +68,7 @@ in ``edx-platform/cms/djangoapps/contentstore/views/component.py``.
 
 ![Advanced](https://raw.githubusercontent.com/polimediaupv/paellaXBlock-v2/master/doc/img/3.png)
 
-.And a new option called Paella Video player. Wich will add the component with the paella demo video to the course.
+.And a new option called Paella Video will appear. Wich will add the component with the paella demo video to the course.
 
 ![Adding paella](https://raw.githubusercontent.com/polimediaupv/paellaXBlock-v2/master/doc/img/4.png)
 
@@ -77,6 +76,22 @@ in ``edx-platform/cms/djangoapps/contentstore/views/component.py``.
 
 ![Playing paella](https://raw.githubusercontent.com/polimediaupv/paellaXBlock-v2/master/doc/img/5.png)
 
-.Right now you can change the title of the video in the platform and the url witch must link with a paella video.
+.By default we will enter in advanced edition mode where we can edit the data.json that stablises the content that will play paellaplayer.
 
 ![Playing paella](https://raw.githubusercontent.com/polimediaupv/paellaXBlock-v2/master/doc/img/6.png)
+
+.You can learn more about the data.json format in the [PaellaPlayer documentation](https://github.com/polimediaupv/paella/blob/master/doc/adopter_doc/integrate_datajson.md)
+
+.In case you just want to view a video/s that is stored in mp4,youtube or hls and don't want to generate the data.json you can switch to the basic view pressing the toggle view button.
+
+![Playing paella](https://raw.githubusercontent.com/polimediaupv/paellaXBlock-v2/master/doc/img/7.png)
+
+.In this mode we can set the video Title (1)
+
+.Set the type and source/id of the first video (2)
+
+.Set the type and source/id of the second video (3)
+
+![Playing paella](https://raw.githubusercontent.com/polimediaupv/paellaXBlock-v2/master/doc/img/8.png)
+
+.Save it to see the result in Paella Player or go to advanced mode to see the data.json generated.
